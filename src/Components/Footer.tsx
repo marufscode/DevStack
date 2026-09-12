@@ -1,130 +1,101 @@
-import React from 'react';
+import { Layers } from "lucide-react";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
-const Footer = () => {
-    return (
-       <footer className="border-t border-slate-100 bg-white">
-      
-      {/* Center Container */}
-      <div className="mx-auto max-w-6xl px-6">
+const LINK_GROUPS = [
+  {
+    title: "Product",
+    links: [
+      { label: "Home", href: "#home" },
+      { label: "Technologies", href: "#technologies" },
+      { label: "Projects", href: "#" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "#" },
+      { label: "Contact", href: "#contact" },
+      { label: "Careers", href: "#" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "#" },
+      { label: "Terms of Service", href: "#" },
+    ],
+  },
+];
 
-        {/* Footer Content */}
-        <div className="grid grid-cols-1 gap-10 py-10 sm:grid-cols-2 lg:grid-cols-4">
+const SOCIALS = [
+  { label: "GitHub", href: "https://github.com", Icon: FaGithub },
+  { label: "Twitter", href: "https://twitter.com", Icon: FaTwitter },
+  { label: "LinkedIn", href: "https://linkedin.com", Icon: FaLinkedin },
+];
 
-          {/* Brand */}
+export default function Footer() {
+  return (
+    <footer id="contact" className="border-t border-slate-200 bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-2">
-              <div className="flex h-5 w-5 items-center justify-center rounded bg-gradient-to-br from-purple-500 to-pink-500 text-[9px] font-bold text-white">
-                DS
-              </div>
-
-              <span className="text-sm font-bold text-slate-900">
-                Dev <span className="text-purple-600">Stack</span>
+            <a href="#home" className="flex items-center gap-2">
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-brand-gradient text-white">
+                <Layers size={18} strokeWidth={2.5} />
               </span>
-            </div>
-
-            <p className="mt-3 max-w-xs text-[10px] leading-4 text-slate-400">
+              <span className="text-lg font-extrabold text-ink">
+                Dev<span className="text-gradient-brand">Stack</span>
+              </span>
+            </a>
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-slate-500">
               Curated tools, technologies, and resources for developers
               building modern software.
             </p>
-
-            <div className="mt-4 flex gap-4">
-              <a href="#" className="text-[9px] text-slate-600 hover:text-purple-600">
-                GitHub
-              </a>
-
-              <a href="#" className="text-[9px] text-slate-600 hover:text-purple-600">
-                Twitter
-              </a>
-
-              <a href="#" className="text-[9px] text-slate-600 hover:text-purple-600">
-                LinkedIn
-              </a>
+            <div className="mt-5 flex items-center gap-3">
+              {SOCIALS.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  className="grid h-9 w-9 place-items-center rounded-full bg-slate-100 text-slate-600 transition-colors hover:bg-ink hover:text-white"
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Product */}
-          <div>
-            <h3 className="text-[9px] font-bold uppercase text-slate-900">
-              Product
-            </h3>
-
-            <div className="mt-3 space-y-2">
-              <a href="#" className="block text-[9px] text-slate-400 hover:text-purple-600">
-                Home
-              </a>
-
-              <a href="#" className="block text-[9px] text-slate-400 hover:text-purple-600">
-                Technologies
-              </a>
-
-              <a href="#" className="block text-[9px] text-slate-400 hover:text-purple-600">
-                Projects
-              </a>
+          {LINK_GROUPS.map((group) => (
+            <div key={group.title}>
+              <h4 className="text-sm font-bold text-ink">{group.title}</h4>
+              <ul className="mt-4 flex flex-col gap-2.5">
+                {group.links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-sm text-slate-500 transition-colors hover:text-ink"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="text-[9px] font-bold uppercase text-slate-900">
-              Company
-            </h3>
-
-            <div className="mt-3 space-y-2">
-              <a href="#" className="block text-[9px] text-slate-400 hover:text-purple-600">
-                About
-              </a>
-
-              <a href="#" className="block text-[9px] text-slate-400 hover:text-purple-600">
-                Contact
-              </a>
-
-              <a href="#" className="block text-[9px] text-slate-400 hover:text-purple-600">
-                Careers
-              </a>
-            </div>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="text-[9px] font-bold uppercase text-slate-900">
-              Legal
-            </h3>
-
-            <div className="mt-3 space-y-2">
-              <a href="#" className="block text-[9px] text-slate-400 hover:text-purple-600">
-                Privacy Policy
-              </a>
-
-              <a href="#" className="block text-[9px] text-slate-400 hover:text-purple-600">
-                Terms of Service
-              </a>
-            </div>
-          </div>
-
+          ))}
         </div>
 
-        {/* Bottom */}
-        <div className="flex items-center justify-between border-t border-slate-100 py-5">
-          
-          <p className="text-[8px] text-slate-300">
-            © 2026 Dev Stack. All rights reserved.
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-6 sm:flex-row">
+          <p className="text-xs text-slate-500">
+            © {new Date().getFullYear()} Dev Stack. All rights reserved.
           </p>
-
-          <div className="flex gap-5">
-            <a href="#" className="text-[8px] text-slate-300 hover:text-slate-500">
-              Privacy
-            </a>
-
-            <a href="#" className="text-[8px] text-slate-300 hover:text-slate-500">
-              Terms
-            </a>
+          <div className="flex items-center gap-5">
+            <a href="#" className="text-xs text-slate-500 hover:text-ink">Privacy</a>
+            <a href="#" className="text-xs text-slate-500 hover:text-ink">Terms</a>
           </div>
-
         </div>
-
       </div>
     </footer>
-    );
-};
-
-export default Footer;
+  );
+}

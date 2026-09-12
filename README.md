@@ -1,75 +1,63 @@
-# React + TypeScript + Vite
+# Dev Stack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Build your ideal development stack — browse curated frontend, backend,
+database, language, styling, DevOps, and tooling picks, and assemble your
+own stack on the side.
 
-Currently, two official plugins are available:
+Built with **Vite + React + TypeScript + Tailwind CSS**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Sticky, responsive navbar with a mobile hamburger menu
+- Gradient hero banner with a custom layered-stack illustration
+- 14 technologies loaded at runtime from `public/technologies.json`
+  (fetched with `fetch()`, not hardcoded in a component)
+- Responsive technology grid: 1 column (mobile) -> 2 columns (tablet) ->
+  3 columns (desktop)
+- "Your Stack" sidebar: add / remove / remove-all, with duplicate-add
+  protection
+- Toast notifications (via `react-toastify`) for every stack action
+- Loading state while the JSON data is fetched
+- One shared brand gradient (orange -> pink -> violet) driving the logo,
+  hero heading, and primary buttons - defined once in
+  `tailwind.config.js` and `src/index.css`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting started
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Then open the printed local URL (typically `http://localhost:5173`).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Build for production
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+npm run preview
+```
+
+`npm run build` type-checks the whole project with `tsc -b` before
+building, so it will fail fast on any type error.
+
+## Project structure
 
 ```
+src/
+  components/       Navbar, Hero, TechGrid, TechCard, StackSidebar, Footer (.tsx)
+  context/          StackContext.tsx - shared "your stack" state (add/remove/remove all)
+  hooks/            useTechnologies.ts - fetches public/technologies.json (loading/error state)
+  utils/            techMeta.ts - category & badge color mappings
+  types.ts          Shared Technology / Category / Difficulty types
+public/
+  technologies.json  The technology catalog data (edit this to add more tech)
+```
+
+## Re-theming
+
+The brand gradient is defined in one place - the `brand-gradient` /
+`brand-gradient-soft` background images and `text-gradient-brand` /
+`btn-gradient` utility classes in `tailwind.config.js` and
+`src/index.css`. Change the three color stops there to re-theme the
+whole app.

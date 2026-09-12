@@ -1,21 +1,29 @@
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import Nav from "./Components/Nav";
-import Banner from "./Components/Banner";
+import { StackProvider } from "./context/StackContext";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import TechGrid from "./components/TechGrid";
+import Footer from "./components/Footer";
 
-import Footer from "./Components/Footer";
-
-
-function App() {
- 
+export default function App() {
   return (
-    <>
-      <Nav/>
-      <Banner></Banner>
-
-      <Footer/>
-
-    </>
-  )
+    <StackProvider>
+      <div className="min-h-screen bg-surface">
+        <Navbar />
+        <main>
+          <Hero />
+          <TechGrid />
+        </main>
+        <Footer />
+      </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        newestOnTop
+        pauseOnHover
+      />
+    </StackProvider>
+  );
 }
-
-export default App

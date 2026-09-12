@@ -1,2 +1,45 @@
-@import "tailwindcss";
-@plugin "daisyui";
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-surface text-ink antialiased;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Brand gradient — the ONE place the orange → pink → violet theme lives.  */
+/* tailwind.config.js's `brand-gradient` background image reads the same   */
+/* stops; anything that needs the gradient should use one of these two     */
+/* utilities (or the bg-brand-gradient / bg-brand-gradient-soft classes)   */
+/* so the whole UI re-themes by editing tailwind.config.js alone.          */
+/* ---------------------------------------------------------------------- */
+.text-gradient-brand {
+  @apply bg-brand-gradient bg-clip-text text-transparent;
+}
+
+.btn-gradient {
+  @apply bg-brand-gradient text-white shadow-card transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-cardHover active:translate-y-0;
+}
+
+/* Custom scrollbar for the stack panel */
+.stack-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.stack-scroll::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
