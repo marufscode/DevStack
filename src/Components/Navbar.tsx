@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Layers, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Logo from "../assets/logo-text.png";
 
 

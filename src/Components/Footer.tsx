@@ -1,8 +1,5 @@
-import { Layers } from "lucide-react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-
 import Logo from "../assets/logo-text.png";
-
 
 const LINK_GROUPS = [
   {
@@ -43,7 +40,6 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <a href="#home" className="flex items-center gap-2">
-             
               <span className="text-lg font-extrabold text-ink">
                 <img src={Logo} alt="" />
               </span>
