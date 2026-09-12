@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
+import HeroLeftBanner from "../assets/banner-stack.png"
 
 interface FloatingIconData {
   name: string;
@@ -53,40 +54,7 @@ function FloatingIcon({ item }: { item: FloatingIconData }) {
 function StackIllustration() {
   return (
     <div className="relative mx-auto w-full max-w-sm py-8">
-      <div
-        aria-hidden="true"
-        className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-gradient opacity-25 blur-3xl"
-      />
-
-      <div className="relative flex items-center justify-center" style={{ perspective: "900px" }}>
-        <div
-          className="relative"
-          style={{
-            width: 240,
-            height: 240,
-            transformStyle: "preserve-3d",
-            transform: "rotateX(58deg) rotateZ(42deg)",
-          }}
-        >
-          {LAYERS.map((layer) => (
-            <div
-              key={layer.z}
-              className={`absolute rounded-3xl border shadow-2xl ${layer.className}`}
-              style={{
-                width: layer.size,
-                height: layer.size,
-                left: (240 - layer.size) / 2,
-                top: (240 - layer.size) / 2,
-                transform: `translateZ(${layer.z}px)`,
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
-      {FLOATING_ICONS.map((item) => (
-        <FloatingIcon key={item.name} item={item} />
-      ))}
+      <img src={HeroLeftBanner} alt="" />
     </div>
   );
 }
