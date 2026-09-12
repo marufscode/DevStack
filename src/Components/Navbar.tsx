@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Layers, Menu, X } from "lucide-react";
+import Logo from "../assets/logo-text.png";
+
 
 const NAV_LINKS = [
   { name: "Home", href: "#home" },
@@ -12,12 +14,7 @@ const NAV_LINKS = [
 function BrandMark() {
   return (
     <a href="#home" className="flex items-center gap-2 shrink-0">
-      <span className="grid h-9 w-9 place-items-center rounded-xl bg-brand-gradient text-white shadow-card">
-        <Layers size={18} strokeWidth={2.5} />
-      </span>
-      <span className="text-lg font-extrabold tracking-tight text-ink">
-        Dev<span className="text-gradient-brand">Stack</span>
-      </span>
+      <img src={Logo} alt="" />
     </a>
   );
 }

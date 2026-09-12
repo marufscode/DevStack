@@ -31,9 +31,9 @@ const LINK_GROUPS = [
 ];
 
 const SOCIALS = [
-  { label: "GitHub", href: "https://github.com", Icon: FaGithub },
+  { label: "GitHub", href: "https://github.com/marufscode", Icon: FaGithub },
   { label: "Twitter", href: "https://twitter.com", Icon: FaTwitter },
-  { label: "LinkedIn", href: "https://linkedin.com", Icon: FaLinkedin },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/maruf-shamim/", Icon: FaLinkedin },
 ];
 
 export default function Footer() {
