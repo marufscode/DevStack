@@ -1,6 +1,9 @@
 import { Layers } from "lucide-react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
+import Logo from "../assets/logo-text.png";
+
+
 const LINK_GROUPS = [
   {
     title: "Product",
@@ -40,11 +43,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <a href="#home" className="flex items-center gap-2">
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-brand-gradient text-white">
-                <Layers size={18} strokeWidth={2.5} />
-              </span>
+             
               <span className="text-lg font-extrabold text-ink">
-                Dev<span className="text-gradient-brand">Stack</span>
+                <img src={Logo} alt="" />
               </span>
             </a>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-slate-500">
